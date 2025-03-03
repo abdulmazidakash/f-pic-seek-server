@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const generateImageUrl = require("../utils/ai/generateImageUrl");
 const getImageBuffer = require("../utils/ai/getImageBuffer");
 const { imageCollection } = require("../utils/connectDB");
@@ -57,4 +58,44 @@ const insertAiImage = async (req, res) => {
 	}
 }
 
-module.exports = { insertAiImage };
+
+//get all image data
+const getAllImage = async(req, res) =>{
+	try{
+		const result = await imageCollection
+		.find()
+		.project({ _id: 1, userImg:1, username:1, thumb_img:1})
+		.toArray();
+		res.send(result);
+	}catch(err){
+		console.error('error getting all images', err);
+		res.status(500).send({
+			status: 500,
+			message: '🚫 An error occurred while processing the image.',
+		})
+	}
+};
+
+//get single image data
+const getSingleImage = async(req, res) =>{
+	try{
+		const { id } = req.params;
+		if(id.length !== 24){
+			res.status(400).send({
+				status: 400,
+				message: '🚫 Invalid image id',
+			})
+		}
+		const result = await imageCollection
+		.findOne({ _id: new ObjectId(id)});
+		res.send(result);
+	}catch(err){
+		console.error('error getting all images', err);
+		res.status(500).send({
+			status: 500,
+			message: '🚫 An error occurred while processing the image.',
+		})
+	}
+};
+
+module.exports = { insertAiImage, getAllImage, getSingleImage };

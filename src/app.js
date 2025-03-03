@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors');
 const logger = require('./middleware/logger'); // Ensure this file exists
 const imageRouter = require('./routes/image.route');
+const commentRouter = require('./routes/comment.route');
 
 // Middleware
 app.use(cors());
@@ -12,6 +13,7 @@ app.use(logger);
 
 // Image Generation Route
 app.use('/api/v1/image', imageRouter)
+app.use('/api/v1/comment', commentRouter)
 
 // Root Route
 app.get('/', (req, res) => {
