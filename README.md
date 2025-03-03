@@ -9,9 +9,9 @@ Pick-Seek is an advanced AI-powered tool that can generate images, analyze image
 ---
 ## Live Link
 
-Live Link (firebase): https://crack-ai-server-2d206.web.app 
-Live Link (firebase): https://crack-ai-server-2d206.firebaseapp.com	
-Live Link (netlify): https://pic-seek-akash.netlify.app/
+- Live Link (firebase): https://crack-ai-server-2d206.web.app 
+- Live Link (firebase): https://crack-ai-server-2d206.firebaseapp.com	
+- Live Link (netlify): https://pic-seek-akash.netlify.app/
 	
 ## Features
 
